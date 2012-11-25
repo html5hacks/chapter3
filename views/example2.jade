@@ -1,0 +1,69 @@
+.container
+    header#overview.jumbotron
+        h2 Hack #30 Create Custom Video Controls with Video APIs
+        video(id='myVideo', width='480', controls, height='360', poster='examples/sanfran.jpg', src='examples/sanfran.m4v')
+        track(src="/examples/subtitles.vtt", type="text/vtt", kind="subtitles", srclang="en", label="English", default)
+        div(style='margin-bottom:30px)
+        button.button.skipBack skip back
+        button.button.stop stop
+        button.button.play play
+        button.button.skipAhead skip ahead
+        button.button.volumeUp volume up
+        button.button.volumeDown volume down
+script
+    console.log('test 1');
+
+script(type='text/javascript')
+
+    var myVideoEl = document.querySelector('#myVideo');
+    console.log(myVideoEl);
+
+    document.querySelector('.play').addEventListener('click',function(e){
+        console.log(myVideoEl.src);
+        if(myVideoEl.currentTime == 0){
+            console.log('working');
+            document.querySelector('#myVideo').src = 'examples/sanfran.m4v'
+        }
+        if(myVideoEl.paused === true){
+            myVideoEl.play();
+        }else{
+        myVideoEl.pause();
+        }
+    });
+
+    document.querySelector('.stop').addEventListener('click',function(e){
+        myVideoEl.src = '';
+    });
+
+
+    document.querySelector('.skipAhead').addEventListener('click',function(e){
+        myCurrentTime = myVideoEl.currentTime;
+        myVideoEl.currentTime = myCurrentTime+5;
+    });
+    
+    document.querySelector('.skipBack').addEventListener('click',function(e){
+        myCurrentTime = myVideoEl.currentTime;
+    
+        myVideoEl.currentTime = myCurrentTime-5;
+    });
+
+
+    document.querySelector('.volumeUp').addEventListener('click',function(e){
+        var myCurrentVolume = myVideoEl.volume;
+        console.log(myCurrentVolume);
+        if(myCurrentVolume >0){
+        myVideoEl.volume = Math.round((myVideoEl.volume + 0.1)*10)/10;
+        //myVideoEl.firstChild.nodeValue = Math.round(myVideoEl.volume*10);
+    }
+    });
+
+    document.querySelector('.volumeUp').addEventListener('click',function(e){
+
+        var myCurrentVolume = myVideoEl.volume;
+        console.log(myCurrentVolume);
+
+        if(myCurrentVolume <1){
+         myVideoEl.volume = Math.round((myVideoEl.volume -0.1)*10)/10;
+         }
+    });
+    document.querySelector('#myVideo').controls = false;

@@ -1,0 +1,38 @@
+style
+    #subtitles{
+    position:absolute;
+    bottom:40px;
+    width:100%;
+    background:url(../images/subtitle.png) repeat;
+    opacity:1;
+    height:40px;
+    color:#FFF;
+    line-height:40px;
+    padding:0 20px;}
+
+    #cuePlayer {
+      overflow: hidden;
+      position: relative; }
+
+    #video {
+          margin: 0 auto 10px auto;
+          background: #555; }
+
+.container
+    header.jumbotron
+      h2 Hack #32 Add Subtitles to Your HTML5 Video Element 
+        .row#cuePlayer
+        video#video(width='680', controls, poster='examples/sanfran.jpg', src='examples/sanfran.m4v')
+    #subtitles
+script(src="/assets/js/cuepoint.js", type="text/javascript")
+script
+    //Slides object with a time (integer) and a html string
+    var slides = {
+    0: "This is the first subtitle. You can put html in here if you like",
+    4: "Easy Cues for HTML5 Video.",
+    7: "An Easy polyfill",
+   
+    }
+    //Start cuepoint and pass in our the subtitles we want
+    cuepoint.init(slides);
+    

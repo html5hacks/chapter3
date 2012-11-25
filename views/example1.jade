@@ -1,0 +1,13 @@
+.container
+    style
+         b{color: red}
+         .name{color:#ddd333}
+         .test::cue{background: blue}
+         .test:cue{background:red}
+         .testme{color: red}
+.container
+    header#overview.jumbotron
+        h2 Hack #28 Embed Video Directly in Your Application with HTML5 Video
+        video(controls, poster='/examples/sanfran.jpg', src='/examples/sanfran.m4v')
+            track.test(src="/examples/subtitles.vtt", type="text/vtt", kind="subtitles", srclang="en", label="English", default)
+    
